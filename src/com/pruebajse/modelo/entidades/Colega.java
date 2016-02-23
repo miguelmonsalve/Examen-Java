@@ -1,4 +1,4 @@
-package com.pruebajse.modelo;
+package com.pruebajse.modelo.entidades;
 
 import java.sql.Date;
 
