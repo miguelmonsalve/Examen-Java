@@ -19,6 +19,13 @@ public class MySqlColegaDao implements ColegaDao {
 	private static final String SELECT_COLEGA_BY_ID = "SELECT * FROM colega WHERE id=?";
 	private static final String SELECT_COLEGA = "SELECT * FROM colega";
 	private DataSource ds;
+	private int claveTablaColegas = 1;
+	
+	
+	
+	public int getClaveTablaColegas() {
+		return claveTablaColegas;
+	}
 
 	public MySqlColegaDao(DataSource ds) {
 		super();
@@ -34,7 +41,8 @@ public class MySqlColegaDao implements ColegaDao {
 			connection = ds.getConnection();
 
 			PreparedStatement ps = connection.prepareStatement(INSERT_COLEGA);
-			ps.setInt(1, colega.getId());
+			ps.setInt(1, claveTablaColegas);
+			claveTablaColegas++;
 			ps.setString(2, colega.getNombre());
 			ps.setString(3, colega.getCiudad());			
 			java.sql.Date sqlDate = new java.sql.Date(colega.getFecha().getTime());			
@@ -46,7 +54,7 @@ public class MySqlColegaDao implements ColegaDao {
 				connection.close();
 		}
 
-		return colega.getId();
+		return claveTablaColegas;
 	}
 
 	@Override
@@ -58,7 +66,7 @@ public class MySqlColegaDao implements ColegaDao {
 
 			connection = ds.getConnection();
 			PreparedStatement ps = connection.prepareStatement(BORRAR_COLEGA);
-			ps.setInt(1, colega.getId());
+			ps.setInt(1, claveTablaColegas);
 			ps.executeUpdate();
 
 		} finally {
