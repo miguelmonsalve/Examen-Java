@@ -20,9 +20,7 @@ public class MySqlColegaDao implements ColegaDao {
 	private static final String SELECT_COLEGA = "SELECT * FROM colega";
 	private DataSource ds;
 	private int claveTablaColegas = 1;
-	
-	
-	
+
 	public int getClaveTablaColegas() {
 		return claveTablaColegas;
 	}
@@ -44,8 +42,8 @@ public class MySqlColegaDao implements ColegaDao {
 			ps.setInt(1, claveTablaColegas);
 			claveTablaColegas++;
 			ps.setString(2, colega.getNombre());
-			ps.setString(3, colega.getCiudad());			
-			java.sql.Date sqlDate = new java.sql.Date(colega.getFecha().getTime());			
+			ps.setString(3, colega.getCiudad());
+			java.sql.Date sqlDate = new java.sql.Date(colega.getFecha().getTime());
 			ps.setDate(4, sqlDate);
 			ps.executeUpdate();
 
@@ -88,7 +86,7 @@ public class MySqlColegaDao implements ColegaDao {
 			ps.setInt(4, colega.getId());
 			ps.setString(1, colega.getNombre());
 			ps.setString(2, colega.getCiudad());
-			java.sql.Date sqlDate = new java.sql.Date(colega.getFecha().getTime());	
+			java.sql.Date sqlDate = new java.sql.Date(colega.getFecha().getTime());
 			ps.setDate(3, sqlDate);
 			ps.executeUpdate();
 
@@ -115,7 +113,7 @@ public class MySqlColegaDao implements ColegaDao {
 
 				return new Colega(id, rs.getString("nombre"), rs.getString("ciudad"), rs.getDate("fecha"));
 			}
-			return null; 
+			return null;
 
 		} finally {
 			if (connection != null)

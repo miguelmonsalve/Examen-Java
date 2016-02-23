@@ -8,7 +8,7 @@ public class Colega {
 	private String nombre;
 	private String ciudad;
 	private Date fecha;
-	
+
 	public Colega(int id, String nombre, String ciudad, Date fecha) {
 		super();
 		this.id = id;
@@ -82,7 +82,5 @@ public class Colega {
 	public String toString() {
 		return "Colega [id=" + id + ", nombre=" + nombre + ", ciudad=" + ciudad + ", fecha=" + fecha + "]";
 	}
-	
-	
-	
+
 }
