@@ -1,6 +1,6 @@
 package com.pruebajse.modelo.entidades;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Colega {
 

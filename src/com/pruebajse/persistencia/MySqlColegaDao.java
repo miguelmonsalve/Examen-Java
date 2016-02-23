@@ -36,8 +36,9 @@ public class MySqlColegaDao implements ColegaDao {
 			PreparedStatement ps = connection.prepareStatement(INSERT_COLEGA);
 			ps.setInt(1, colega.getId());
 			ps.setString(2, colega.getNombre());
-			ps.setString(3, colega.getCiudad());
-			ps.setDate(4, colega.getFecha());
+			ps.setString(3, colega.getCiudad());			
+			java.sql.Date sqlDate = new java.sql.Date(colega.getFecha().getTime());			
+			ps.setDate(4, sqlDate);
 			ps.executeUpdate();
 
 		} finally {
@@ -79,7 +80,8 @@ public class MySqlColegaDao implements ColegaDao {
 			ps.setInt(4, colega.getId());
 			ps.setString(1, colega.getNombre());
 			ps.setString(2, colega.getCiudad());
-			ps.setDate(3, colega.getFecha());
+			java.sql.Date sqlDate = new java.sql.Date(colega.getFecha().getTime());	
+			ps.setDate(3, sqlDate);
 			ps.executeUpdate();
 
 		} finally {
