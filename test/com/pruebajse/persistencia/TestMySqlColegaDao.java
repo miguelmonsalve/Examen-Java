@@ -37,15 +37,19 @@ public class TestMySqlColegaDao {
 		sut.baja(otroColega);
 		sut.alta(otroColega);
 		int idEsperadoOtroColega = sut.getClaveTablaColegas() - 1;
-		Colega OtroColegaObtenido = sut.consultaPorId(idEsperadoOtroColega);
+		Colega otroColegaObtenido = sut.consultaPorId(idEsperadoOtroColega);
 
 		try {
 			// Asertos
 			assertEquals(idEsperadoColega, colegaObtenido.getId());
-			assertEquals(idEsperadoOtroColega, OtroColegaObtenido.getId());
+			assertEquals(idEsperadoOtroColega, otroColegaObtenido.getId());
+
 			assertEquals(colega.getNombre(), colegaObtenido.getNombre());
+			assertEquals(otroColega.getNombre(), otroColegaObtenido.getNombre());
+
 			assertEquals(colega.getCiudad(), colegaObtenido.getCiudad());
-			assertEquals(colega.getNombre(), colegaObtenido.getNombre());
+			assertEquals(otroColega.getCiudad(), otroColegaObtenido.getCiudad());
+
 		} catch (Exception e) {
 			fail("Se produce un error y no deberia");
 		}
