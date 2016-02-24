@@ -28,18 +28,18 @@ public class TestMySqlColegaDao {
 		Colega otroColega = new Colega("Pepe", "Barcelona", fecha);
 		MySqlColegaDao sut = new MySqlColegaDao(ds);
 
-		// Ejecucion
-		sut.baja(colega);
-		sut.alta(colega);
-		int idEsperadoColega = sut.getClaveTablaColegas() - 1;
-		Colega colegaObtenido = sut.consultaPorId(idEsperadoColega);
-
-		sut.baja(otroColega);
-		sut.alta(otroColega);
-		int idEsperadoOtroColega = sut.getClaveTablaColegas() - 1;
-		Colega otroColegaObtenido = sut.consultaPorId(idEsperadoOtroColega);
-
 		try {
+			// Ejecucion
+			sut.baja(colega);
+			sut.alta(colega);
+			int idEsperadoColega = sut.getClaveTablaColegas() - 1;
+			Colega colegaObtenido = sut.consultaPorId(idEsperadoColega);
+
+			sut.baja(otroColega);
+			sut.alta(otroColega);
+			int idEsperadoOtroColega = sut.getClaveTablaColegas() - 1;
+			Colega otroColegaObtenido = sut.consultaPorId(idEsperadoOtroColega);
+
 			// Asertos
 			assertEquals(idEsperadoColega, colegaObtenido.getId());
 			assertEquals(idEsperadoOtroColega, otroColegaObtenido.getId());
